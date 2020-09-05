@@ -62,3 +62,23 @@ Então devo ver o texto
     [Arguments]     ${expect_text}
 
     Wait Until Page Contains        ${expect_text}      5
+
+# Equipos
+Dado que acesso o formulário de Cadastro de Equipamentos
+    Wait Until Element is Visible       ${NAV_EQUIPOS}      5
+    Click Element                       ${NAV_EQUIPOS}
+    Wait Until Element is Visible       ${EQUIPOS_FORM}     5
+    Click Element                       ${EQUIPOS_FORM}
+
+E que eu tenho o seguinte equipamento:
+    [Arguments]     ${equipo_name}      ${equipo_price}
+
+    Set Test Variable       ${equipo_name}
+    Set Test Variable       ${equipo_price}
+
+Quando faço o cadastro desse equipamento
+    Register New Equipo     ${equipo_name}        ${equipo_price}
+
+Então devo ver mensagens de erro informando que os campos de cadastro de equipamentos são Obrigatórios
+    Wait Until Element Contains     ${LABEL_EQUIPO_NAME}       Nome do equipo é obrigatório         5
+    Wait Until Element Contains     ${LABEL_EQUIPO_PRICE}      Diária do equipo é obrigatória       5
