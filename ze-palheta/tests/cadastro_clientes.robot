@@ -40,6 +40,10 @@ Telefone é Obrigatório
     [Template]      Validação de Campos
     Fernanda        34508390222     Rua dos Bugs, 1000      ${EMPTY}     Telefone é obrigatório
 
+Telefone incorreto
+    [Template]      Validação de Campos
+    João da Silva   00000001406     Rua dos Bugs, 1000      1199999999      Telefone inválido
+
 ***Keywords***
 Validação de Campos
     [Arguments]     ${nome}     ${cpf}      ${endereco}     ${telefone}     ${saida}
