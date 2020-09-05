@@ -3,8 +3,8 @@ Documentation   Login
 
 Resource        ../resources/base.robot
 
-Test Setup      Start Session
-Test Teardown   Finish Session
+Suite Setup      Start Session
+Suite Teardown   Finish Session
 
 ***Test Cases***
 Login do Administrador
