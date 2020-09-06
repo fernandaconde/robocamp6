@@ -18,7 +18,7 @@ def execute_q(query):
     conn.close()
 
 def format_cpf(cpf):
-    return cpf[:3] + "." + cpf[3:6] + "-" + cpf[9:]
+    return cpf[:3] + "." + cpf[3:6] + "." + cpf[6:9] + "-" + cpf[9:]
 
 def insert_customer(name, cpf, address, phone):
     cpf_formatado = format_cpf(cpf)

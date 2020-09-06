@@ -15,6 +15,7 @@ Novo Cliente
     ...     Bon Jovi            000.000.014-06      Rua dos Bugs, 1000      11999999999
     Quando faço a inclusão desse cliente
     Então devo ver a notificação:   Cliente cadastrado com sucesso!
+    E esse cliente deve ser exibido na lista
 
 Cliente duplicado
     [Tags]      duplicado

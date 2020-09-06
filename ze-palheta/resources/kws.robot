@@ -62,6 +62,11 @@ Então devo ver o texto
 
     Wait Until Page Contains        ${expect_text}      5
 
+E esse cliente deve ser exibido na lista
+    Go Back
+    Wait Until Element Is Visible   ${CUSTOMER_LIST}           5
+    Table Should Contain            ${CUSTOMER_LIST}           ${cpf}
+
 # Equipos
 Dado que acesso o formulário de Cadastro de Equipamentos
     Wait Until Element is Visible       ${NAV_EQUIPOS}      5
@@ -81,3 +86,25 @@ Quando faço o cadastro desse equipamento
 Então devo ver mensagens de erro informando que os campos de cadastro de equipamentos são Obrigatórios
     Wait Until Element Contains     ${LABEL_EQUIPO_NAME}       Nome do equipo é obrigatório         5
     Wait Until Element Contains     ${LABEL_EQUIPO_PRICE}      Diária do equipo é obrigatória       5
+
+# Remove Customer
+Dado que eu tenho um cliente indesejado:
+    [Arguments]             ${name}     ${cpf}      ${address}      ${phone_number}
+
+    Remove Customer By Cpf              ${cpf}
+
+    ${cpf_formatado}=                   Format Cpf          ${cpf}
+
+    Insert Customer         ${name}     ${cpf_formatado}      ${address}      ${phone_number}
+
+    Set Test Variable       ${cpf_formatado}
+
+E acesso a lista de clientes
+    Go To Customers
+
+Quando eu removo o cliente    
+    Go To Customer Details                  ${cpf_formatado}
+    Click Remove Customer 
+
+E esse cliente não deve aparecer na lista
+    Wait Until Page Does Not Contain        ${cpf_formatado}
